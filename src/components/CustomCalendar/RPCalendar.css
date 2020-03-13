@@ -1,0 +1,41 @@
+.calendar-table {
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  border-collapse: separate;
+}
+.calendar-table th {
+  text-align: center;
+}
+.calendar-day {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.today {
+  background-color: #4285f4;
+  color: white;
+}
+.calendar-day:not(.disabled):not(.empty):not(.today):hover {
+  background: #ccc;
+}
+.selected-day {
+  background-color: #ccc;
+  color: white;
+}
+.calendar-day.today.selected-day {
+  border: 1px solid #0160f8
+}
+.disabled {
+  cursor: not-allowed;
+  color: #ccc
+}
+.empty{
+  border: none;
+  cursor: default
+}
+.arrow {
+  cursor: pointer;
+}

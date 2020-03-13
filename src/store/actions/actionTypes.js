@@ -1,0 +1,15 @@
+export const SET_THERAPIST = 'SET_THERAPIST';
+export const SET_IMAGE_URL = 'SET_IMAGE_URL';
+export const SET_CONTENT = 'SET_CONTENT';
+export const SET_DATE = 'SET_DATE';
+export const SET_DAY = 'SET_DAY';
+export const ON_PREV = 'ON_PREV';
+export const ON_NEXT = 'ON_NEXT';
+export const SET_TIME_SLOT = 'SET_TIME_SLOT';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const USER_LOGOUT = 'USER_LOGOUT';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+export const ERROR = 'ERROR';
+export const SAVE_CONTACT_DATA = 'SAVE_CONTACT_DATA';
+export const SHOW_CONFIRMATION = 'SHOW_CONFIRMATION';

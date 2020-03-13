@@ -1,0 +1,15 @@
+.time-table {
+  margin: 0 auto;
+  border-collapse: separate;
+}
+.time-table th {
+  text-align: center;
+}
+.selected-timeSlot{
+  background-color: #da2121;
+  /* width: 28px;
+  height: 28px; */
+  line-height: 28px;
+  border-radius: 2%;
+  color: white;
+}

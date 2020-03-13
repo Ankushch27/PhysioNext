@@ -1,0 +1,22 @@
+/* .section-parallax {
+  height: 87vh;
+  width: 100%;
+  display: table;
+  background: url(../../assets/ortho-and-sports.jpg);
+  background-size: cover;
+  position: relative;
+} */
+.parallax {
+  padding: 25vh 0;
+  background: #123;
+}
+/* .parallax {
+  display: table-cell;
+  text-align: center;
+  vertical-align: baseline;
+  background: rgba(0, 0, 0, 0.25);
+} */
+.jumbotron {
+  margin-bottom: 0;
+  padding: 2rem;
+}

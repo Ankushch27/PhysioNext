@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.59104446.chunk.css",
+    "main.js": "/static/js/main.de265fd1.chunk.js",
+    "main.js.map": "/static/js/main.de265fd1.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.81e53b34.js",
+    "runtime-main.js.map": "/static/js/runtime-main.81e53b34.js.map",
+    "static/css/2.74e6b330.chunk.css": "/static/css/2.74e6b330.chunk.css",
+    "static/js/2.7aa2cedd.chunk.js": "/static/js/2.7aa2cedd.chunk.js",
+    "static/js/2.7aa2cedd.chunk.js.map": "/static/js/2.7aa2cedd.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.051ac1c3780f5131461b0c3b65973ca8.js": "/precache-manifest.051ac1c3780f5131461b0c3b65973ca8.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.74e6b330.chunk.css.map": "/static/css/2.74e6b330.chunk.css.map",
+    "static/css/main.59104446.chunk.css.map": "/static/css/main.59104446.chunk.css.map",
+    "static/js/2.7aa2cedd.chunk.js.LICENSE": "/static/js/2.7aa2cedd.chunk.js.LICENSE",
+    "static/media/ortho-and-sports.jpg": "/static/media/ortho-and-sports.ea3be9bd.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.81e53b34.js",
+    "static/css/2.74e6b330.chunk.css",
+    "static/js/2.7aa2cedd.chunk.js",
+    "static/css/main.59104446.chunk.css",
+    "static/js/main.de265fd1.chunk.js"
+  ]
+}

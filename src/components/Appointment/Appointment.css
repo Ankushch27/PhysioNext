@@ -1,0 +1,7 @@
+.react-calendar {
+  width: 550px;
+}
+.sticky {
+  position: sticky;
+  top: 0;
+}

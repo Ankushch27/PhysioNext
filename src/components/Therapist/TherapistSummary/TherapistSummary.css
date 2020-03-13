@@ -1,0 +1,12 @@
+.therapist-img {
+  cursor: pointer;
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+/* .therapist-summary {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15)
+} */
+/* .therapist-summary:hover {
+  box-shadow: 0 0.5rem 1rem rgba(33, 177, 255, 0.18)
+} */
