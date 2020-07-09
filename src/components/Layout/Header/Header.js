@@ -3,55 +3,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import logoLight from '../../../assets/Physio-logo-light.png';
 import logoDark from '../../../assets/Physio-logo-dark.png';
 import { logout } from '../../../store/actions/authActions';
 import './header.css';
 
 class Header extends Component {
-  state = {
-    showCollapsedMenu: false,
-    logo: logoLight
-  };
-
-  toggleMenu = () => {
-    this.setState({
-      showCollapsedMenu: !this.state.showCollapsedMenu
-    });
-  };
-
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
+  closeNav = () => {
+    document.getElementById("nav--toggle").checked = false;
   }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
-
-  handleScroll = () => {
-    const header = document.querySelector('header');
-    const isTop = window.scrollY < 350;
-    if (this.props.location.pathname === '/') {
-      if (!isTop) {
-        header.classList.add('nav-scrolled');
-        this.setState({ logo: logoDark });
-      } else {
-        header.classList.remove('nav-scrolled');
-        this.setState({ logo: logoLight });
-      }
-    } else {
-      header.classList.remove('nav-scrolled');
-      this.setState({ logo: logoLight });
-    }
-  };
 
   render() {
     const { auth, profile } = this.props;
-    const show = this.state.showCollapsedMenu ? 'show' : '';
 
     const links = auth.uid ? (
       <div className="dropdown">
-        <div className="btn-profile m-3">{profile.initials}</div>
+        <div className="btn-profile">{profile.initials}</div>
+        <FontAwesomeIcon icon="caret-down" className="caret" />
         <div className="dropdown-content">
           <p>
             {profile.firstName} {profile.lastName}
@@ -64,54 +31,56 @@ class Header extends Component {
         </div>
       </div>
     ) : (
-      <NavLink to="/login" className="nav--link text-white">
-        <FontAwesomeIcon icon="user-circle" className="nav-icon" size="2x" />
-        <span className="login-btn">Login</span>
-      </NavLink>
+      <li className="nav--item">
+        <NavLink onClick={this.closeNav} to="/login" className="login-btn">
+          <FontAwesomeIcon icon="user" className="login-icon" />
+          <span className="login-text">Login</span>
+        </NavLink>
+      </li>
     );
     return (
-      <header>
-        <nav className="navbar navbar-expand-lg navbar-dark py-3">
-          <NavLink to="/" className="navbar-brand">
-            <img src={this.state.logo} alt="" className="img-fluid" style={{ width: 220 + 'px' }} />
-          </NavLink>
-          <button
-            className="navbar-toggler"
-            type="button"
-            onClick={this.toggleMenu}
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className={'collapse navbar-collapse ' + show} id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <NavLink to="/" exact className="nav--link">
-                  Home
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/contact" className="nav--link">
-                  Contact
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/faqs" className="nav--link">
-                  FAQs
-                </NavLink>
-              </li>
-            </ul>
-            <form className="form-inline">
-              <Link to="/therapist" className="booking-btn">
-                Book an Appointment
+      <header id="nav-header">
+        <NavLink to="/" className="logo">
+          <img src={logoDark} alt="" className="logo-img" />
+        </NavLink>
+        <input type="checkbox" id="nav--toggle" className="nav--toggle" />
+        <nav>
+          <ul className="nav--list">
+            <li className="nav--item">
+              <NavLink onClick={this.closeNav} exact to="/" className="nav--link">
+                Home
+                <FontAwesomeIcon icon="home" className="fa-icon" />
+              </NavLink>
+            </li>
+            <li className="nav--item">
+              <NavLink onClick={this.closeNav} to="/about" className="nav--link">
+                About
+                <FontAwesomeIcon icon="info" className="fa-icon" />
+              </NavLink>
+            </li>
+            <li className="nav--item">
+              <NavLink onClick={this.closeNav} to="/contact" className="nav--link">
+                Contact
+                <FontAwesomeIcon icon="phone" className="fa-icon" />
+              </NavLink>
+            </li>
+            <li className="nav--item">
+              <NavLink onClick={this.closeNav} to="/faqs" className="nav--link">
+                FAQ
+                <FontAwesomeIcon icon="question" className="fa-icon" />
+              </NavLink>
+            </li>
+            <li className="nav--item">
+              <Link onClick={this.closeNav} to="/therapist" className="booking-btn">
+                Book a Visit
               </Link>
-              {links}
-            </form>
-          </div>
+            </li>
+            {links}
+          </ul>
         </nav>
+        <label htmlFor="nav--toggle" className="nav--toggle__label">
+          <span className="ham-btn"></span>
+        </label>
       </header>
     );
   }

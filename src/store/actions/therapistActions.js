@@ -12,6 +12,18 @@ export const setImageUrl = imageUrl => {
   };
 };
 
+export const setTime = time => {
+  return dispatch => {
+    dispatch({ type: actionTypes.SET_TIME, value: time });
+  };
+};
+
+export const setPrice = price => {
+  return dispatch => {
+    dispatch({ type: actionTypes.SET_PRICE, value: price });
+  };
+};
+
 export const setContent = content => {
   return dispatch => {
     dispatch({ type: actionTypes.SET_CONTENT, value: content });

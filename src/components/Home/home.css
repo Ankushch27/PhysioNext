@@ -1,22 +1,162 @@
-/* .section-parallax {
-  height: 87vh;
-  width: 100%;
-  display: table;
-  background: url(../../assets/ortho-and-sports.jpg);
-  background-size: cover;
-  position: relative;
-} */
 .parallax {
-  padding: 25vh 0;
-  background: #123;
+  padding: 16.6rem 0rem;
+  width: 100%;
+  background-image: url(../../assets/5040.webp);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-/* .parallax {
-  display: table-cell;
+.carousel {
+  position: absolute;
+  background: gainsboro;
+  width: 50%;
+  height: 25%;
+  top: 30%;
+  z-index: 0;
+}
+.carousel::before {
+  content: '';
+  position: absolute;
+  right: -30px;
+  top: -10%;
+  width: 15px;
+  background: rgba(0, 123, 255, 0.25);
+  height: 130%;
+  transform: skew(-25deg, 0deg);
+}
+.carousel::after {
+  content: '';
+  position: absolute;
+  right: -50px;
+  top: 0;
+  width: 100px;
+  background: gainsboro;
+  height: 100%;
+  transform: skew(-25deg, 0deg);
+  z-index: -1;
+}
+.carousel-inner {
+  width: 80%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto;
+}
+.carousel-control-next,
+.carousel-control-prev {
+  width: 10%;
+}
+.home-booking-btn {
+  transform: translateY(180px);
+  font-weight: bold;
+  color: #fff;
+  background-color: #21b1ff;
+  border: 1px solid #21b1ff;
+  padding: 1rem 2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 0.2rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.working-info h2 {
+  padding-top: 1rem;
   text-align: center;
-  vertical-align: baseline;
-  background: rgba(0, 0, 0, 0.25);
-} */
+}
+
+.icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+
+.icon {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 0.7rem;
+}
+
+.icon img {
+  min-width: 100px;
+  min-height: 100px;
+}
+
+.working-info__heading {
+  align-self: center;
+  padding: 0 1rem;
+}
+
+.working-info__detail {
+  color: #757575;
+  text-align: justify;
+}
+
+@media (min-width: 900px) {
+  .working-info {
+    padding: 1rem 0;
+  }
+  .icons {
+    grid-template-columns: repeat(2, minmax(auto, 382px));
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1109px) {
+  .icons {
+    grid-template-columns: minmax(auto, 10rem) repeat(4, 1fr) minmax(auto, 10rem);
+    padding: 1rem 0;
+    gap: 0;
+  }
+  .icon1 {
+    grid-column: 2 / 3;
+  }
+  
+  .working-info__detail {
+    text-align: initial;
+  }
+}
+
 .jumbotron {
   margin-bottom: 0;
-  padding: 2rem;
+  padding: 2rem 10rem;
+}
+
+@media (max-width: 768px) {
+  .parallax {
+    background-position: right;
+  }
+  .home-booking-btn {
+    padding: 0.5rem 1rem;
+  }
+  .jumbotron {
+    padding: 2rem;
+  }
+}
+.home-booking-btn:hover {
+  cursor: pointer;
+  color: #fff;
+}
+@media screen and (max-width: 480px) {
+  .parallax {
+    padding: 6rem 0rem;
+    background-position: center;
+  }
+  .carousel {
+    position: relative;
+    width: auto;
+    padding: 20px;
+  }
+  .carousel::before,
+  .carousel::after {
+    display: none;
+  }
+  .carousel-inner {
+    transform: none;
+  }
+  .home-booking-btn {
+    transform: translateY(70px);
+    padding: 0.5rem 1rem;
+  }
 }

@@ -1,12 +1,44 @@
+.card {
+  width: 100%;
+  border-radius: 0.5rem;
+}
 .therapist-img {
   cursor: pointer;
-  height: 200px;
   width: 100%;
   object-fit: cover;
+  border-radius: 0.5rem 0.5rem 0rem 0rem;
 }
-/* .therapist-summary {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15)
-} */
-/* .therapist-summary:hover {
-  box-shadow: 0 0.5rem 1rem rgba(33, 177, 255, 0.18)
-} */
+.summary-body {
+  text-align: center;
+  padding: 1rem
+}
+.summary-title {
+  font-weight: bold;
+  margin: 0.5rem 0rem;
+}
+.summary-text {
+  display: grid;
+  grid-template-columns: 1fr 0.01fr 1fr;
+}
+.summary-time,
+.summary-price {
+  color: gray;
+}
+.summary-time::before {
+  content: '\f017';
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 15px;
+  margin-right: 0.3rem;
+}
+.vertical-line {
+  border-left: 1px solid black
+}
+.summary-btn {
+  color: #fff;
+  background-color: #21b1ff;
+  border: 1px solid #21b1ff;
+  margin: 0.3rem;
+  padding: 0.3rem 1rem;
+  border-radius: 0.2rem;
+}

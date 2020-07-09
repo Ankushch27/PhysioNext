@@ -49,26 +49,15 @@ import './PatientContactForm.css';
 
 const required = value => (value ? undefined : 'This field is required');
 
-// const maxLength = max => value =>
-//   value && value.length > max ? `Must be ${max} characters or less` : undefined;
-
 const minLength = min => value =>
   value && value.length < min ? `Must be ${min} characters or more` : undefined;
 
 const email = value => (value && !isValidEmail(value) ? 'Email is invalid' : null);
 
 const phoneNumber = value =>
-  value && !/^((\+)(\d{2}[-]))?(\d{10}){1}?$/i.test(value)
+  value && !/^((\+)(\d{2}[-]?))?(\d{10}){1}?$/i.test(value)
     ? 'Invalid phone number, must be 10 digits'
     : undefined;
-
-const normalizePhone = value => {
-  const onlyNums = value.replace(/[^(+){1}91[ ]\d]/g, '');
-  if (onlyNums.length > 10) {
-    return onlyNums.slice(0, 14);
-  }
-  return onlyNums;
-};
 
 const pincode = value =>
   value && !/^[1-9][0-9]{5}$/i.test(value) ? 'Invalid pincode, must be 6 digits' : null;
@@ -79,7 +68,7 @@ const normalizePincode = value => {
     return onlyNums.slice(0, 6);
   }
   return onlyNums;
-}
+};
 
 const createRenderer = render => ({ input, meta, label }) => (
   <>
@@ -108,8 +97,8 @@ const renderTextarea = createRenderer((input, meta) => (
 
 const renderCheckbox = createRenderer((input, meta) => (
   <>
-    <input {...input} type="checkbox" />
-    <label className="ml-2">Accept Terms and Conditions</label>
+    <input {...input} id="tnc" type="checkbox" />
+    <label htmlFor="tnc" className="ml-2">Accept Terms and Conditions</label>
   </>
 ));
 
@@ -160,15 +149,15 @@ class PatientContactForm extends Component {
                       // normalize={normalizePhone}
                     />
                   </div>
-                  <div className="col-md-6 mb-3">
+                  <div className="col-md-12 mb-3">
                     <Field
-                      name="houseNo"
-                      label="House No."
+                      name="address"
+                      label="Address"
                       component={renderInput}
                       validate={[required]}
                     />
                   </div>
-                  <div className="col-md-6 mb-3">
+                  {/* <div className="col-md-6 mb-3">
                     <Field
                       name="street"
                       label="Street No."
@@ -183,9 +172,14 @@ class PatientContactForm extends Component {
                       component={renderInput}
                       validate={[required]}
                     />
-                  </div>
+                  </div> */}
                   <div className="col-md-6 mb-3">
-                    <Field name="city" label="City" component={renderInput} validate={[required]} />
+                    <Field
+                      name="city"
+                      label="City"
+                      component={renderInput}
+                      validate={[required]}
+                    />
                   </div>
                   <div className="col-md-6 mb-3">
                     <Field
@@ -235,6 +229,8 @@ class PatientContactForm extends Component {
                 date={this.props.appointmentDate}
                 time={this.props.appointmentTime}
                 title={title}
+                duration={this.props.duration}
+                price={this.props.price}
                 buttonName={strings.PROCEED}
                 disabled={invalid}
               />
@@ -249,6 +245,8 @@ class PatientContactForm extends Component {
 const mapStateToProps = state => {
   return {
     therapistTitle: state.therapist.selectedTherapist,
+    duration: state.therapist.selectedTime,
+    price: state.therapist.selectedPrice,
     appointmentDate: state.appointment.selectedDate,
     appointmentTime: state.appointment.selectedTimeSlot,
     selectedDay: state.appointment.selectedDay
@@ -258,7 +256,7 @@ const mapStateToProps = state => {
 PatientContactForm = reduxForm({
   form: 'PatientContact',
   onSubmit: submit,
-  destroyOnUnmount: false,
+  destroyOnUnmount: false
   // validate,
 })(PatientContactForm);
 

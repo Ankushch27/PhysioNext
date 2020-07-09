@@ -13,6 +13,7 @@ import './fontawesome';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import rootReducer from './store/reducers/rootReducer';
+import ScrollToTop from './ScrollToTop';
 
 export const history = createBrowserHistory();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -41,6 +42,7 @@ const app = (
   <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfProps}>
       <Router history={history}>
+        <ScrollToTop/>
         <AuthIsLoaded>
           <App />
         </AuthIsLoaded>

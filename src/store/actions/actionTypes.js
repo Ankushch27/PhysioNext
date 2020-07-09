@@ -1,5 +1,7 @@
 export const SET_THERAPIST = 'SET_THERAPIST';
 export const SET_IMAGE_URL = 'SET_IMAGE_URL';
+export const SET_TIME = 'SET_TIME';
+export const SET_PRICE = 'SET_PRICE';
 export const SET_CONTENT = 'SET_CONTENT';
 export const SET_DATE = 'SET_DATE';
 export const SET_DAY = 'SET_DAY';
@@ -13,3 +15,4 @@ export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const ERROR = 'ERROR';
 export const SAVE_CONTACT_DATA = 'SAVE_CONTACT_DATA';
 export const SHOW_CONFIRMATION = 'SHOW_CONFIRMATION';
+export const SHOW_PAYMENT = 'SHOW_PAYMENT';

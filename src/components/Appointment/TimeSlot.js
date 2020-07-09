@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setTimeSlot } from '../../store/actions/appointmentActions';
-import './TimeSlot.css'
+import './TimeSlot.css';
 
 export class TimeSlot extends Component {
   onTimeSlotCLick = timeSlot => {
@@ -10,38 +10,45 @@ export class TimeSlot extends Component {
 
   render() {
     const data = [
-      '9:00am - 10:00am',
-      '12:00pm - 1:00pm',
-      '4:00pm - 5:00pm',
-      '10:00am - 11:00pm',
-      '1:00pm - 2:00pm',
-      '5:00pm - 6:00pm',
-      '11:00am - 12:00pm',
-      '2:00pm - 3:00pm',
-      '6:00pm - 7:00pm',
-      '',
-      '3:00pm - 4:00pm',
-      '7:00pm - 8:00pm'
+      '9:00 am',
+      '10:00 am',
+      '11:00 am',
+      '12:00 pm',
+      '1:00 pm',
+      '2:00 pm',
+      '3:00 pm',
+      '4:00 pm',
+      '5:00 pm',
+      '6:00 pm',
+      '7:00 pm'
     ];
+
+    let blank = [];
+    blank.push(
+      <div className="blank" key={'blank'}>
+        {''}
+      </div>
+    );
 
     let timeSlotData = [];
     for (let i = 0; i < data.length; i++) {
       let selectedTimeSlotClass =
         data[i] === this.props.selectedTimeSlot ? ' selected-timeSlot' : '';
       timeSlotData.push(
-        <td
+        <div
           key={i}
-          className={'timeSlot border border-primary' + selectedTimeSlotClass}
+          className={'timeSlot' + selectedTimeSlotClass}
           onClick={() => this.onTimeSlotCLick(data[i])}>
           {data[i]}
-        </td>
+        </div>
       );
     }
 
+    let totalTimeSlots = [...timeSlotData, ...blank];
     let rows = [];
     let cells = [];
 
-    timeSlotData.forEach((row, i) => {
+    totalTimeSlots.forEach((row, i) => {
       if (i % 3 !== 0) {
         cells.push(row);
       } else {
@@ -49,29 +56,20 @@ export class TimeSlot extends Component {
         cells = [];
         cells.push(row);
       }
-      if (i === timeSlotData.length - 1) {
+      if (i === totalTimeSlots.length - 1) {
         rows.push(cells);
       }
     });
 
     let timeSlots = rows.map((d, i) => {
-      return <tr key={i}>{d}</tr>;
+      return (
+        <div className="row justify-content-around" key={i}>
+          {d}
+        </div>
+      );
     });
 
-    return (
-      <div>
-        <table className="time-table">
-          <thead>
-            <tr>
-              <th>Morning</th>
-              <th>Afternoon</th>
-              <th>Evening</th>
-            </tr>
-          </thead>
-          <tbody>{timeSlots}</tbody>
-        </table>
-      </div>
-    );
+    return <div className="timeslot-container">{timeSlots}</div>;
   }
 }
 

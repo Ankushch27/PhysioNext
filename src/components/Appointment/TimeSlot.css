@@ -1,15 +1,26 @@
-.time-table {
-  margin: 0 auto;
-  border-collapse: separate;
+.timeslot-container {
+  max-width: 573px;
+  margin: auto;
+  padding: 1rem 1rem 6px;
+  background: white;
+  border-radius: 0.5rem;
 }
-.time-table th {
+.timeSlot {
+  cursor: pointer;
+  flex: 0.25 0 10%;
+  border: 1px solid black;
+  border-radius: 0.3rem;
+  margin-bottom: 10px;
+  padding: 5px 0px;
   text-align: center;
 }
-.selected-timeSlot{
-  background-color: #da2121;
-  /* width: 28px;
-  height: 28px; */
-  line-height: 28px;
-  border-radius: 2%;
-  color: white;
+.timeSlot:hover {
+  background: #ccc;
+}
+.blank {
+  flex: 0.25 0 10%;
+  margin-bottom: 10px;
+}
+.selected-timeSlot {
+  background-color: #ccc;
 }

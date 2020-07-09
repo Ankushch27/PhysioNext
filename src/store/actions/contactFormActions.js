@@ -15,3 +15,17 @@ export const saveContactData = contactFormData => {
     })
   }
 }
+
+export const showPayment = (payment) => {
+  return (dispatch, getState, { getFirestore }) => {
+    console.log("Taking to payment gateway...")
+    const firestore = getFirestore();
+    firestore.collection('buttonClicked').add({
+      payment
+    }).then(() => {
+      dispatch({type: actionTypes.SHOW_PAYMENT})
+    }).catch((error) => {
+      dispatch({type: actionTypes.ERROR, error})
+    })
+  }
+}

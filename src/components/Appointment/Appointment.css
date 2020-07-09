@@ -1,7 +1,12 @@
-.react-calendar {
-  width: 550px;
+.booking {
+  gap: 3rem;
+  padding: 2rem 0;
 }
-.sticky {
-  position: sticky;
-  top: 0;
+
+@media (min-width: 768px) {
+  .booking {
+    gap: initial;
+    grid-template: 'calendar app-summary';
+    padding: 5rem 0;
+  }
 }

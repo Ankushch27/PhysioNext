@@ -20,8 +20,9 @@ class Login extends Component {
   };
 
   render() {
+    const redirect = this.props.location.search ? this.props.location.search.split('=')[1] : '/';
     const { auth } = this.props;
-    if (auth.uid) return <Redirect to="/" />;
+    if (auth.uid) return <Redirect to={redirect} />;
     return (
       <div className="section-white col-md-6 m-auto">
         <form className="bg-white shadow p-4">

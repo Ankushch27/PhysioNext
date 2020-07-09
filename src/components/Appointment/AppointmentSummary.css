@@ -1,0 +1,51 @@
+.app-summary {
+  position: sticky;
+  top: 132px;
+}
+.card {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+.therapist-img {
+  cursor: pointer;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem 0.5rem 0rem 0rem;
+}
+.app-summary-body {
+  text-align: center;
+  padding: 1rem;
+}
+.app-summary-title {
+  font-weight: bold;
+  padding: 0.3rem;
+}
+.app-summary-text {
+  display: grid;
+  grid-template-columns: 1fr 0.01fr 1fr;
+}
+.app-summary-time,
+.app-summary-price {
+  color: gray;
+}
+.app-summary-time::before {
+  content: '\f017';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 15px;
+  margin-right: 0.3rem;
+}
+.app-vertical-line {
+  border-left: 1px solid black;
+}
+.app-summary-date {
+  margin-top: 1rem;
+}
+.app-summary-btn {
+  color: #fff;
+  background-color: #21b1ff;
+  border: 1px solid #21b1ff;
+  padding: 0.3rem 1rem;
+  border-radius: 0.2rem;
+  margin-top: 1rem;
+}

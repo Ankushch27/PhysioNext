@@ -14,6 +14,11 @@ const contactFormReducer = (state = initState, action) => {
       return {
         ...state
       };
+      case actionTypes.SHOW_PAYMENT:
+        console.log('Payment gateway!');
+        return {
+          ...state
+        };
     default:
       return state;
   }

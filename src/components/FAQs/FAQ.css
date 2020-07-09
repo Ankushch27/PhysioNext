@@ -1,0 +1,16 @@
+.card-header {
+  cursor: pointer;
+}
+.card-header::after {
+  content: '\f067';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 15px;
+  float: right;
+  transform: rotate(-90deg);
+  transition: transform 250ms ease-in-out;
+}
+.open.card-header::after {
+  content: '\f068';
+  transform: rotate(0deg);
+}

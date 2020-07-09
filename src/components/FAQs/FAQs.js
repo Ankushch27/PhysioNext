@@ -9,6 +9,18 @@ class FAQs extends Component {
   };
 
   render() {
+    const toggleFAQ = index => {
+      this.setState(
+        this.state.faqs.map((faq, i) => {
+          if (i === index) {
+            faq.show = !faq.show;
+          } else {
+            faq.show = false;
+          }
+          return faq;
+        })
+      );
+    };
     return (
       <div className="section-white">
         <div className="container">
@@ -16,7 +28,7 @@ class FAQs extends Component {
             <div className="col-md-12">
               <Accordion>
                 {this.state.faqs.map((faq, i) => (
-                  <FAQ faq={faq} index={i} key={i} />
+                  <FAQ faq={faq} index={i} key={i} toggleFAQ={toggleFAQ} />
                 ))}
               </Accordion>
             </div>

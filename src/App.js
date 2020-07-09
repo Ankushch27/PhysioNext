@@ -34,6 +34,14 @@ function App() {
           <Route path="/therapist/:id/book/contact-form" component={PatientContactForm} />
           <Route path="/pay-select" component={PaymentOptions} />
           <Route path="/appointment-confirm" component={AppointmentConfirm} />
+          <Route
+            path="/paytm"
+            component={() => {
+              window.location.href =
+                'https://us-central1-physionext-d454f.cloudfunctions.net/paytm';
+              return null;
+            }}
+          />
           <Route component={Default} />
         </Switch>
       </div>

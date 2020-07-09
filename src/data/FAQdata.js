@@ -26,5 +26,63 @@ export const faqs = [
     healthy and recreational life. Till date, every person has left a positive feedback
     because of the impact this branch leaves on.`,
     show: false
-  }
+  },
+  {
+    question: 'What should I expect in my First Appointment?',
+    answer: `First appointment is very much of assessment rather than of treatment, a physiotherapist will:
+    1: Assess you briefly according to the complaint, past medical history, family history, recent medical investigations such as blood tests, X Rays, CT-scans etc.
+    2: Physiotherapist will decide treatment plan, number of visits required for rehabilitation and per visit and packages charges
+    3: Finalize suitable timing for both parties.`,
+    show: false
+  },
+  {
+    question: 'Do I need to pay any amount in first visit?',
+    answer: `If you had paid booking charges ₹149/- online, then you don’t need to pay anything for your first visit.`,
+    show: false
+  },
+  {
+    question: 'Can I consult directly for treatment?',
+    answer: `Yes, you can consult us directly without any follow up.`,
+    show: false
+  },
+  {
+    question: 'Is there any booking charges?',
+    answer: `Yes, there is booking charges that is ₹149/- including taxes. And it is non-refundable amount.`,
+    show: false
+  },
+  {
+    question: 'What will be my per visit charge?',
+    answer: `You have to book first visit in ₹149/- only and a therapist will come to your place for assessment and checkup decide per visit charge for your condition(s) and you can either opt for per session payment or discounted packages.`,
+    show: false
+  },
+  {
+    question: 'Is there any additional charges or tax except these treatment charges?',
+    answer: `There is no hidden fee and the amount of first visit (₹149/-), per session charge or packages were inclusive of all taxes.`,
+    show: false
+  },
+  {
+    question: 'Is there any additional charges or tax except these treatment charges?',
+    answer: `There is no hidden fee and the amount of first visit (₹149/-), per session charge or packages were inclusive of all taxes.`,
+    show: false
+  },
+  {
+    question: 'Is there any additional charges or tax except these treatment charges?',
+    answer: `There is no hidden fee and the amount of first visit (₹149/-), per session charge or packages were inclusive of all taxes.`,
+    show: false
+  },
+  {
+    question: 'Is there any additional charges or tax except these treatment charges?',
+    answer: `There is no hidden fee and the amount of first visit (₹149/-), per session charge or packages were inclusive of all taxes.`,
+    show: false
+  },
+  {
+    question: 'Is there any additional charges or tax except these treatment charges?',
+    answer: `There is no hidden fee and the amount of first visit (₹149/-), per session charge or packages were inclusive of all taxes.`,
+    show: false
+  },
+  {
+    question: 'Is there any additional charges or tax except these treatment charges?',
+    answer: `There is no hidden fee and the amount of first visit (₹149/-), per session charge or packages were inclusive of all taxes.`,
+    show: false
+  },
 ];

@@ -1,0 +1,14 @@
+.payment-container {
+  background: white;
+  flex-wrap: wrap;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+.confirm-btn {
+  color: #fff;
+  background-color: #21b1ff;
+  border: 1px solid #21b1ff;
+  margin: 0.3rem;
+  padding: 0.3rem 1rem;
+  border-radius: 0.2rem;
+}
