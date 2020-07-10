@@ -15,7 +15,7 @@ const AppointmentSummary = props => {
         <button
           className="app-summary-btn"
           onClick={() => {
-            props.history.push('/therapist/' + props.title + '/book/date');
+            props.history.push('/therapist/' + props.therapistId + '/book/date');
             props.setTherapist(props.title);
           }}>
           {props.buttonName}
@@ -27,7 +27,7 @@ const AppointmentSummary = props => {
         <button
           className="app-summary-btn"
           onClick={() =>
-            props.history.push('/therapist/' + props.title + '/book/contact-form')
+            props.history.push('/therapist/' + props.therapistId + '/book/contact-form')
           }
           disabled={props.disabled}>
           {props.buttonName}

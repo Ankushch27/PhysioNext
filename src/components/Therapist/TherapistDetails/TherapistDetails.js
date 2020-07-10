@@ -7,15 +7,15 @@ import { firestoreConnect } from 'react-redux-firebase';
 
 const TherapistDetails = (props) => {
   const { therapist } = props;
-  // const therapistId = props.match.params.id;
+  const therapistId = props.match.params.id;
 
   if (therapist) {
     return (
       <div className="section-white">
         <div className="container">
           <div className="row">
-            <h4 className="card-title pl-3">{therapist.title} </h4>
             <div className="col-md-8">
+              <h4 className="card-title pl-3">{therapist.title} </h4>
               <div className="card">
                 <img className="card-img-top" src={therapist.imgUrl} alt="" />
                 <div className="p-3 shadow">
@@ -25,6 +25,7 @@ const TherapistDetails = (props) => {
             </div>
             <div className="col-md-4">
               <AppointmentSummary
+                therapistId={therapistId}
                 title={therapist.title}
                 duration={therapist.time}
                 price={therapist.price}

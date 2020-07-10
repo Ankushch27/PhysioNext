@@ -6,6 +6,8 @@ import * as strings from '../../data/strings';
 import { history } from '../../index';
 import AppointmentSummary from './AppointmentSummary';
 import './PatientContactForm.css';
+import { compose } from 'redux';
+import { firestoreConnect } from 'react-redux-firebase';
 
 // const validate = values => {
 //   const errors = {};
@@ -47,22 +49,22 @@ import './PatientContactForm.css';
 //   return errors;
 // };
 
-const required = value => (value ? undefined : 'This field is required');
+const required = (value) => (value ? undefined : 'This field is required');
 
-const minLength = min => value =>
+const minLength = (min) => (value) =>
   value && value.length < min ? `Must be ${min} characters or more` : undefined;
 
-const email = value => (value && !isValidEmail(value) ? 'Email is invalid' : null);
+const email = (value) => (value && !isValidEmail(value) ? 'Email is invalid' : null);
 
-const phoneNumber = value =>
+const phoneNumber = (value) =>
   value && !/^((\+)(\d{2}[-]?))?(\d{10}){1}?$/i.test(value)
     ? 'Invalid phone number, must be 10 digits'
     : undefined;
 
-const pincode = value =>
+const pincode = (value) =>
   value && !/^[1-9][0-9]{5}$/i.test(value) ? 'Invalid pincode, must be 6 digits' : null;
 
-const normalizePincode = value => {
+const normalizePincode = (value) => {
   const onlyNums = value.replace(/[^\d]/g, '');
   if (onlyNums.length > 6) {
     return onlyNums.slice(0, 6);
@@ -70,7 +72,7 @@ const normalizePincode = value => {
   return onlyNums;
 };
 
-const createRenderer = render => ({ input, meta, label }) => (
+const createRenderer = (render) => ({ input, meta, label }) => (
   <>
     <label>{label}</label>
     {render(input, meta, label)}
@@ -98,7 +100,9 @@ const renderTextarea = createRenderer((input, meta) => (
 const renderCheckbox = createRenderer((input, meta) => (
   <>
     <input {...input} id="tnc" type="checkbox" />
-    <label htmlFor="tnc" className="ml-2">Accept Terms and Conditions</label>
+    <label htmlFor="tnc" className="ml-2">
+      Accept Terms and Conditions
+    </label>
   </>
 ));
 
@@ -109,14 +113,10 @@ const submit = () => {
 
 class PatientContactForm extends Component {
   render() {
-    const { handleSubmit, invalid } = this.props;
-    const title = this.props.therapistTitle;
-    // const dateSelected = this.props.selectedDay;
+    console.log(this.props);
+    const { therapist, handleSubmit, invalid } = this.props;
 
-    // if (!dateSelected) {
-    //   this.props.history.goBack();
-    //   return null;
-    // }
+    if (!therapist) return null;
     return (
       <div className="section-white">
         <div className="container">
@@ -227,10 +227,9 @@ class PatientContactForm extends Component {
             <div className="col-md-4">
               <AppointmentSummary
                 date={this.props.appointmentDate}
-                time={this.props.appointmentTime}
-                title={title}
-                duration={this.props.duration}
-                price={this.props.price}
+                title={therapist.title}
+                duration={therapist.time}
+                price={therapist.price}
                 buttonName={strings.PROCEED}
                 disabled={invalid}
               />
@@ -242,24 +241,27 @@ class PatientContactForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  // console.log(state);
+  const id = ownProps.match.params.id;
+  const therapists = state.firestore.data.therapists;
+  const therapist = therapists ? therapists[id] : null;
   return {
-    therapistTitle: state.therapist.selectedTherapist,
-    duration: state.therapist.selectedTime,
-    price: state.therapist.selectedPrice,
+    therapist,
     appointmentDate: state.appointment.selectedDate,
-    appointmentTime: state.appointment.selectedTimeSlot,
-    selectedDay: state.appointment.selectedDay
   };
 };
 
 PatientContactForm = reduxForm({
   form: 'PatientContact',
   onSubmit: submit,
-  destroyOnUnmount: false
+  destroyOnUnmount: false,
   // validate,
 })(PatientContactForm);
 
-PatientContactForm = connect(mapStateToProps)(PatientContactForm);
+PatientContactForm = compose(
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: 'therapists' }])
+)(PatientContactForm);
 
 export default PatientContactForm;
