@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initState = {
-  selectedTherapist: null,
+  selectedTherapistId: null,
   selectedImageUrl: null,
   selectedTime: null,
   selectedPrice: null,
@@ -10,10 +10,10 @@ const initState = {
 
 const therapistReducer = (state = initState, action) => {
   switch (action.type) {
-    case actionTypes.SET_THERAPIST:
+    case actionTypes.SET_THERAPIST_ID:
       return {
         ...state,
-        selectedTherapist: action.value
+        selectedTherapistId: action.value
       };
     case actionTypes.SET_IMAGE_URL:
       return {

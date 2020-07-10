@@ -1,8 +1,8 @@
 import * as actionTypes from './actionTypes'
 
-export const setTherapist = therapist => {
+export const setTherapistId = therapistId => {
   return dispatch => {
-    dispatch({ type: actionTypes.SET_THERAPIST, value: therapist });
+    dispatch({ type: actionTypes.SET_THERAPIST_ID, value: therapistId });
   };
 };
 

@@ -113,8 +113,14 @@ const submit = () => {
 
 class PatientContactForm extends Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { therapist, handleSubmit, invalid } = this.props;
+    // const dateSelected = this.props.selectedDay;
+
+    // if (!dateSelected) {
+    //   this.props.history.goBack();
+    //   return null;
+    // }
 
     if (!therapist) return null;
     return (
@@ -122,6 +128,7 @@ class PatientContactForm extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8">
+              <h4>Patient's Contact Information</h4>
               <form className="bg-white shadow p-4" onSubmit={handleSubmit}>
                 <div className="form-row">
                   <div className="col-md-12 mb-3">
@@ -249,6 +256,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     therapist,
     appointmentDate: state.appointment.selectedDate,
+    selectedDay: state.appointment.selectedDay
   };
 };
 

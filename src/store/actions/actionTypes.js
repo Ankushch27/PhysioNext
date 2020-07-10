@@ -1,4 +1,4 @@
-export const SET_THERAPIST = 'SET_THERAPIST';
+export const SET_THERAPIST_ID = 'SET_THERAPIST_ID';
 export const SET_IMAGE_URL = 'SET_IMAGE_URL';
 export const SET_TIME = 'SET_TIME';
 export const SET_PRICE = 'SET_PRICE';

@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { submit } from 'redux-form';
-import { setTherapist } from '../../store/actions/therapistActions';
+import { setTherapistId } from '../../store/actions/therapistActions';
 import * as strings from '../../data/strings';
 import './AppointmentSummary.css';
 
-const AppointmentSummary = props => {
+const AppointmentSummary = (props) => {
   let button;
   switch (props.buttonName) {
     case strings.BOOK_NOW:
@@ -16,7 +16,6 @@ const AppointmentSummary = props => {
           className="app-summary-btn"
           onClick={() => {
             props.history.push('/therapist/' + props.therapistId + '/book/date');
-            props.setTherapist(props.title);
           }}>
           {props.buttonName}
         </button>
@@ -26,9 +25,10 @@ const AppointmentSummary = props => {
       button = (
         <button
           className="app-summary-btn"
-          onClick={() =>
-            props.history.push('/therapist/' + props.therapistId + '/book/contact-form')
-          }
+          onClick={() => {
+            props.history.push('/therapist/' + props.therapistId + '/book/contact-form');
+            props.setTherapistId(props.therapistId);
+          }}
           disabled={props.disabled}>
           {props.buttonName}
         </button>
@@ -76,10 +76,10 @@ const AppointmentSummary = props => {
   );
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    setTherapist: therapist => dispatch(setTherapist(therapist)),
-    submit: () => dispatch(submit('PatientContact'))
+    setTherapistId: (therapistId) => dispatch(setTherapistId(therapistId)),
+    submit: () => dispatch(submit('PatientContact')),
   };
 };
 

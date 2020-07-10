@@ -2,27 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as strings from '../../data/strings';
 import './PaymentOptions.css';
-import {showPayment} from '../../store/actions/contactFormActions'
-
+import { showPayment } from '../../store/actions/contactFormActions';
 
 const PaymentOptions = ({
-  therapistTitle,
+  therapist,
   appointmentDate,
   appointmentTime,
   formData,
   history,
-  openGateway
+  openGateway,
 }) => {
+  if (therapist) console.log(therapist);
+  console.log(formData);
+
   // if (!formData) {
   //   history.goBack();
   //   return null;
   // }
   const confirmBooking = () => {
-    console.log("confirm")
+    console.log('confirm');
     // openGateway("Confirm clicked")
     // history.push('/paytm')
-  }
-  
+  };
+
   return (
     <div className="section-white">
       <div className="container">
@@ -48,7 +50,9 @@ const PaymentOptions = ({
               Address: {formData.values.houseNo} {formData.values.street}{' '}
               {formData.values.locality} {formData.values.city} {formData.values.state}{' '}
             </p> */}
-            <button className="confirm-btn" onClick={confirmBooking}>{strings.CONFIRM_BOOKING}</button>
+              <button className="confirm-btn" onClick={confirmBooking}>
+                {strings.CONFIRM_BOOKING}
+              </button>
             </div>
           </div>
           <div className="col-md-4"></div>
@@ -58,19 +62,21 @@ const PaymentOptions = ({
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   console.log(state);
+  const id = state.therapist.selectedTherapistId;
+  const therapists = state.firestore.data.therapists;
+  const therapist = therapists ? therapists[id] : null;
   return {
-    therapistTitle: state.therapist.selectedTherapist,
+    therapist,
     appointmentDate: state.appointment.selectedDate,
-    appointmentTime: state.appointment.selectedTimeSlot,
-    formData: state.form.PatientContact
+    formData: state.form.PatientContact,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    openGateway: params => dispatch(showPayment(params))
+    openGateway: (params) => dispatch(showPayment(params)),
   };
 };
 
