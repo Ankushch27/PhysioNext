@@ -7,13 +7,15 @@ import { showPayment } from '../../store/actions/contactFormActions';
 const PaymentOptions = ({
   therapist,
   appointmentDate,
-  appointmentTime,
   formData,
   history,
   openGateway,
 }) => {
   if (therapist) console.log(therapist);
   console.log(formData);
+  const dateArr = appointmentDate.split(/ |,/);
+  const month = dateArr[0]
+  const date = dateArr[1]
 
   // if (!formData) {
   //   history.goBack();
@@ -22,47 +24,47 @@ const PaymentOptions = ({
   const confirmBooking = () => {
     console.log('confirm');
     // openGateway("Confirm clicked")
-    // history.push('/paytm')
+    history.push('/appointment-confirm')
   };
 
   return (
     <div className="section-white">
       <div className="container">
         <div className="row">
-          <div className="col-md-4"></div>
-          <div className="col-md-4">
-            <div className="payment-container">
-              PaymentOptions
-              <p>March 28, 2020</p>
-              <p>5:00 pm</p>
-              <p>Sports Physiotherapist</p>
-              <p>Name: Ankush</p>
-              <p>Email: abcd@gmail.com</p>
-              <p>Phone: 8451451515</p>
-              <p>Address: eefdgfgfddddd fdgfedg hv</p>
-              {/* <p>{appointmentDate}</p>
-            <p>{appointmentTime}</p>
-            <p>{therapistTitle}</p>
-            <p>Name: {formData.values.name}</p>
-            <p>Email: {formData.values.email}</p>
-            <p>Phone: {formData.values.phone}</p>
-            <p>
-              Address: {formData.values.houseNo} {formData.values.street}{' '}
-              {formData.values.locality} {formData.values.city} {formData.values.state}{' '}
-            </p> */}
+          <div className="payment-container">
+            <div
+              className="app-date"
+              style={{
+                background: `url(${therapist.imgUrl})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}>
+              <h1>{date}</h1>
+              <h3>{month}</h3>
+            </div>
+            <div className="p-4">
+              <h3>
+                <strong>{therapist.title}</strong>
+              </h3>
+              <p>{therapist.time} | &#8377; {therapist.price}</p>
+              <div className="py-3">
+                <p>{formData.values.name}</p>
+                <p>{formData.values.email}</p>
+                <p>{formData.values.phone}</p>
+                <p>{formData.values.address}</p>
+              </div>
               <button className="confirm-btn" onClick={confirmBooking}>
                 {strings.CONFIRM_BOOKING}
               </button>
             </div>
           </div>
-          <div className="col-md-4"></div>
         </div>
       </div>
     </div>
   );
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   console.log(state);
   const id = state.therapist.selectedTherapistId;
   const therapists = state.firestore.data.therapists;
