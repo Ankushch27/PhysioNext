@@ -1,30 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as strings from '../../data/strings';
+import { saveContactData } from '../../store/actions/contactFormActions';
 import './PaymentOptions.css';
-import { showPayment } from '../../store/actions/contactFormActions';
 
 const PaymentOptions = ({
   therapist,
   appointmentDate,
   formData,
   history,
-  openGateway,
+  saveContactData,
 }) => {
-  if (therapist) console.log(therapist);
-  console.log(formData);
+  // if (therapist) console.log(therapist);
+  // console.log(formData);
   const dateArr = appointmentDate.split(/ |,/);
   const month = dateArr[0]
   const date = dateArr[1]
 
-  // if (!formData) {
-  //   history.goBack();
-  //   return null;
-  // }
+  if (!formData) {
+    history.goBack();
+    return null;
+  }
   const confirmBooking = () => {
     console.log('confirm');
-    // openGateway("Confirm clicked")
-    history.push('/appointment-confirm')
+    saveContactData(formData.values)
+    // history.push('/appointment-confirm')
   };
 
   return (
@@ -65,7 +65,7 @@ const PaymentOptions = ({
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   const id = state.therapist.selectedTherapistId;
   const therapists = state.firestore.data.therapists;
   const therapist = therapists ? therapists[id] : null;
@@ -78,7 +78,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    openGateway: (params) => dispatch(showPayment(params)),
+    saveContactData: (formData) => dispatch(saveContactData(formData)),
   };
 };
 
