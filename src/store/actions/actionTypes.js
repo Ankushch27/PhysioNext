@@ -14,5 +14,6 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const ERROR = 'ERROR';
 export const SAVE_CONTACT_DATA = 'SAVE_CONTACT_DATA';
+export const RESET = 'RESET';
 export const SHOW_CONFIRMATION = 'SHOW_CONFIRMATION';
 export const SHOW_PAYMENT = 'SHOW_PAYMENT';

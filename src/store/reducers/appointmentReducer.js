@@ -1,22 +1,22 @@
 import * as actionTypes from '../actions/actionTypes';
 
-const initState = {
+const INIT_STATE = {
   selectedDate: null,
   selectedDay: null,
-  selectedTimeSlot: null
+  selectedTimeSlot: null,
 };
 
-const appointmentReducer = (state = initState, action) => {
+const appointmentReducer = (state = INIT_STATE, action) => {
   switch (action.type) {
     case actionTypes.SET_DATE:
       return {
         ...state,
-        selectedDate: action.value
+        selectedDate: action.value,
       };
     case actionTypes.SET_DAY:
       return {
         ...state,
-        selectedDay: action.value
+        selectedDay: action.value,
       };
     case actionTypes.ON_NEXT:
     case actionTypes.ON_PREV:
@@ -24,13 +24,15 @@ const appointmentReducer = (state = initState, action) => {
         ...state,
         selectedDate: null,
         selectedDay: null,
-        selectedTimeSlot: null
+        selectedTimeSlot: null,
       };
     case actionTypes.SET_TIME_SLOT:
       return {
         ...state,
-        selectedTimeSlot: action.value
+        selectedTimeSlot: action.value,
       };
+    case actionTypes.RESET:
+      return INIT_STATE;
     default:
       return state;
   }
